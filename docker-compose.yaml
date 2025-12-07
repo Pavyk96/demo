@@ -1,0 +1,30 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: project
+      POSTGRES_USER: project
+      POSTGRES_PASSWORD: project
+    volumes:
+      - project_pg_data:/var/lib/postgresql/data
+
+  backend:
+    image: denis/crud:latest
+    container_name: denis-crud
+    depends_on:
+      - postgres
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/project
+      - SPRING_DATASOURCE_USERNAME=project
+      - SPRING_DATASOURCE_PASSWORD=project
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+volumes:
+  project_pg_data:
+
+
