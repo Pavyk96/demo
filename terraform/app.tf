@@ -1,5 +1,5 @@
 resource "yandex_compute_instance" "app" {
-  name        = "project-app-vm"
+  name        = "backend"
   platform_id = "standard-v3"
   zone        = "ru-central1-a"
 

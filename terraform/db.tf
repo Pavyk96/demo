@@ -1,5 +1,5 @@
 resource "yandex_compute_instance" "postgres" {
-  name        = "project-postgres-vm"
+  name        = "postgres"
   platform_id = "standard-v3"
   zone        = "ru-central1-a"
 
@@ -36,10 +36,10 @@ resource "yandex_compute_instance" "postgres" {
             systemctl start docker
 
             docker volume create project_pg_data || true
-            docker rm -f project-postgres || true
+            docker rm -f db || true
 
             docker run -d \
-              --name project-postgres \
+              --name db \
               -p 5432:5432 \
               -e POSTGRES_DB=project \
               -e POSTGRES_USER=project \

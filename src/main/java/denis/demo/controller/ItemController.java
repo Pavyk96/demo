@@ -18,27 +18,52 @@ public class ItemController {
 
     @PostMapping
     public ItemResponseDto create(@RequestBody @Valid ItemRequestDto dto) {
-        return itemService.create(dto);
+        try {
+            return itemService.create(dto);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
     }
 
     @GetMapping("/{id}")
     public ItemResponseDto getById(@PathVariable Long id) {
-        return itemService.getById(id);
+        try {
+            return itemService.getById(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
     }
 
     @GetMapping
     public List<ItemResponseDto> getAll() {
-        return itemService.getAll();
+        try {
+            return itemService.getAll();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
     }
 
     @PutMapping("/{id}")
     public ItemResponseDto update(@PathVariable Long id,
                                   @RequestBody @Valid ItemRequestDto dto) {
-        return itemService.update(id, dto);
+        try {
+            return itemService.update(id, dto);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
     }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
-        itemService.delete(id);
+        try {
+            itemService.delete(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
     }
 }

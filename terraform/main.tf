@@ -12,4 +12,3 @@ provider "yandex" {
   folder_id = "b1gscki2kduk5mgp784h"
   service_account_key_file = "authorized_key.json"
 }
-
