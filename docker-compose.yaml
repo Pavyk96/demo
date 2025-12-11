@@ -12,7 +12,7 @@ services:
       - project_pg_data:/var/lib/postgresql/data
 
   backend:
-    image: denis/crud:latest
+    image: payk96/crud:latest
     container_name: denis-crud
     depends_on:
       - postgres

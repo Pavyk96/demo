@@ -15,6 +15,10 @@ resource "yandex_compute_instance" "backend" {
     }
   }
 
+  depends_on = [
+    yandex_compute_instance.postgres
+  ]
+
   network_interface {
     subnet_id = yandex_vpc_subnet.public.id
     nat       = true
@@ -38,13 +42,14 @@ resource "yandex_compute_instance" "backend" {
             docker rm -f project-app || true
 
             docker run -d \
-              --name project-app \
+              --name backend \
+              --restart always \
               -p 8080:8080 \
               -e SPRING_DATASOURCE_URL="jdbc:postgresql://${yandex_compute_instance.postgres.network_interface.0.ip_address}:5432/project" \
               -e SPRING_DATASOURCE_USERNAME=project \
               -e SPRING_DATASOURCE_PASSWORD=project \
               -e SPRING_JPA_HIBERNATE_DDL_AUTO=update \
-              payk96/project-pavlov:latest
+              payk96/crud:latest
 
       runcmd:
         - [ /usr/local/bin/start-app.sh ]
