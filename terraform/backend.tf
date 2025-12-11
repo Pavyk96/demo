@@ -1,4 +1,4 @@
-resource "yandex_compute_instance" "app" {
+resource "yandex_compute_instance" "backend" {
   name        = "backend"
   platform_id = "standard-v3"
   zone        = "ru-central1-a"
