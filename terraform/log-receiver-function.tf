@@ -15,8 +15,8 @@ resource "yandex_function" "log_receiver" {
   memory            = "128"
   execution_timeout = "3"
 
-  service_account_id = "ajemr75cgjlnrh2b6lh3"
-  folder_id          = "b1gscki2kduk5mgp784h"
+  service_account_id = "ajes70okd947b5rgde1d"
+  folder_id          = "b1gg6budajcjd7gpjohb"
 
   content {
     zip_filename = data.archive_file.log_receiver_zip.output_path
