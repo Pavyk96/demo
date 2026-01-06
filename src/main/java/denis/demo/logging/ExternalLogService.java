@@ -10,7 +10,7 @@ public class ExternalLogService {
 
     private final RestClient client = RestClient.create();
 
-    private static final String URL = "https://functions.yandexcloud.net/d4egi46fk5iv6plqftq0";
+    private static final String URL = "    https://functions.yandexcloud.net/d4e67v0qar5v0f851onp";
 
     public void log(String message) {
         client.post()
